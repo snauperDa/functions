@@ -8,8 +8,9 @@
 
 using namespace std;
 
-int negativeNumberCounter(const double arrayUser[], int count) {
+int negativeNumberCounter(double arrayUser[], int count) {
   int countNegativeElement = 0;
+  
   for (int rowIndex = 0; rowIndex < count; ++rowIndex) {
     if (arrayUser[rowIndex] < 0) {
       ++countNegativeElement;
@@ -19,24 +20,22 @@ int negativeNumberCounter(const double arrayUser[], int count) {
   return countNegativeElement;
 }
 
-void printArray(const double arrayUser[], int count) {
-  int negativeElementArrya = negativeNumberCounter(arrayUser, count);
-
+void printArray(double arrayUser[], int count) {
   for (int rowIndex = 0; rowIndex < count; ++rowIndex) {
     cout << arrayUser[rowIndex] << ' ';
   }
-
-  cout << '\n' << "Number of negative elements = " << negativeElementArrya << '\n';
 }
 
 void cinArray(double arrayUser[], int count) {
   for (int rowIndex = 0; rowIndex < count; ++rowIndex) {
-    cout << "Element: " << rowIndex + 1 << " = "; cin >> arrayUser[rowIndex];
+    cout << "Element: " << rowIndex + 1 << " = ";
+    cin >> arrayUser[rowIndex];
   }
 }
 
 int main() {
   int countElementArrayS, countElementArrayW;
+  double arrayS[20], arrayW[20];
 
   cout << "Enter the number of array elements S: ";
 
@@ -52,14 +51,15 @@ int main() {
     return 0;
   }
 
-  double arrayS[countElementArrayS];
-  double arrayW[countElementArrayW];
+  cout << "Array S:\n";
+  cinArray(arrayS, countElementArrayS);
+  cout << "Array W:\n";
+  cinArray(arrayW, countElementArrayW);
 
-  cout << "Array S:\n"; cinArray(arrayS, countElementArrayS);
-  cout << "Array W:\n"; cinArray(arrayW, countElementArrayW);
-
-  cout << "Array S:\n"; printArray(arrayS, countElementArrayS);
-  cout << "Array W:\n"; printArray(arrayW, countElementArrayW);
+  cout << "\nArray S:\nCount negative element: " << negativeNumberCounter(arrayS, countElementArrayS) << '\n';
+  printArray(arrayS, countElementArrayS);
+  cout << "\nArray W:\nCount negative element: " << negativeNumberCounter(arrayW, countElementArrayW) << '\n';
+  printArray(arrayW, countElementArrayW);
 
   return 0;
 }
